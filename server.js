@@ -12,6 +12,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(express.static(__dirname + "/public"));
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', burgersController)

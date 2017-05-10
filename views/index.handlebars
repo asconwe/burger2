@@ -1,0 +1,27 @@
+<div class="column" id="burgers-to-eat">
+  <ul>
+    {{#each burger}}
+    {{#unless devoured}}
+    <form id="{{burger_name}}">
+      <h4>{{burger_name}}</h4>
+      <hr>
+      <i>&#x1F354</i>
+      <input type="submit" action="/api/edit?method=PUT/:{{burger_name}}" value="Devour burger!">
+    </li>
+    {{/unless}}
+    {{/each}}
+  </ul>
+</div>
+<div class="column" id="burgers-devoured">
+  <ul>
+    {{#each burger}}
+    {{#if devoured}}
+    <form id="{{burger_name}}">
+      <h4>{{burger_name}}</h4>
+      <hr>
+      <i>&#x1F354</i><p>Eaten!</p>
+    </li>
+    {{/if}}
+    {{/each}}
+  </ul>
+</div>
