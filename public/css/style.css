@@ -1,0 +1,17 @@
+body {
+  background: white;
+}
+
+nav {
+  height: 100px;
+}
+
+.content {
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+  .content {
+    width: 500px;
+  }
+}
