@@ -1,21 +1,30 @@
 var connection = require('./connection');
 
-function selectAll() {
-  
+function selectAll(table, callback) {
+  connection.query('SELECT * FROM ' + table, function (err, data) {
+    if (err) throw err;
+    callback(data);
+  });
 }
 
-function insertOne() {
-  
+function insertOne(table, colValObj, callback) {
+  connection.query('INSERT INTO ' + table + ' SET ?', colValObj, function (err, data) {
+    if (err) throw err;
+    callback(data);
+  });
 }
 
-function updateOne() {
-  
+function updateOne(table, colValObj, conditionObj, callback) {
+  connection.query('UPDATE ' + table + ' SET ?? = ? WHERE ?? = ?', [colValObj.col, colValObj.val, conditionObj.col, conditionObj.val],  function (err, data) {
+    if (err) throw err;
+    callback(data);
+  })
 }
 
 var orm = {
   selectAll: selectAll,
   updateOne: updateOne,
-  insertOne: instertOne
+  insertOne: insertOne
 }
 
-module.exports = orm;
+module.exports = orm; 
