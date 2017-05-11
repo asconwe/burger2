@@ -14,8 +14,8 @@ function insertOne(table, colValObj, callback) {
   });
 }
 
-function updateOne(table, colValObj, conditionObj, callback) {
-  connection.query('UPDATE ' + table + ' SET ?? = ? WHERE ?? = ?', [colValObj.col, colValObj.val, conditionObj.col, conditionObj.val],  function (err, data) {
+function updateOne(table, updateValueObj, itemToUpdate, callback) {
+  connection.query('UPDATE ' + table + ' SET ? WHERE ?', [updateValueObj, itemToUpdate],  function (err, data) {
     if (err) throw err;
     callback(data);
   })

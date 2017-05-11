@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Burger Tracker</title>
-  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="js/fe.js"></script>
 </head>
 <body>
-  <nav class="header"></nav>
+  <nav class="header">Burgers</nav>
   <section class="content">
-    {{{body}}}
+  <button id="new-burger-button">New Burger</button>
+    <div>
+      {{{ body }}}
+    </div>
   </section>
+  <div class="outer">
+    <div class="modal" id="new-burger-modal">
+      <form class="modal-form" action="/api/new" method="POST">
+        <input type="text" placeholder="Burger name" name="burger_name">
+        <input type="submit" value="Add burger!">
+      </form>
+    </div>
+  </div>
 </body>
 </html>

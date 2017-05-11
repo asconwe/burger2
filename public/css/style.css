@@ -1,5 +1,6 @@
 body {
   background: white;
+  color: black;
 }
 
 nav {
@@ -7,7 +8,39 @@ nav {
 }
 
 .content {
+  position: relative;
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.column {
+  width: 50%;
+  float: left;
+}
+
+.outer {
+  position: fixed;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  width: 450px;
+  top: 300px;
+  left: 50%;
+  margin-left: -275px;
+  background: white;
+  border: solid 1px black;
+  padding: 50px;
+  text-align: center;
+}
+
+.burger {
+  margin-top: 2.5%;
+  border: solid 1px black;
+  width: 90%;
+  padding: 2.5%
 }
 
 @media (min-width: 500px) {

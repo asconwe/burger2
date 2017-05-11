@@ -5,7 +5,11 @@ var router = express.Router();
 
 router.get('/', function (req, res) {
   console.log('hey');
-  res.render('index');
+  burger.selectAll(function (data) { 
+    var burgerObj = { burgers: data };
+    console.log(burgerObj);
+    res.render('index', burgerObj);
+  });
 });
 
 router.get('/api/burgers', function (req, res) {
@@ -16,20 +20,20 @@ router.get('/api/burgers', function (req, res) {
 
 router.post('/api/new', function (req, res) {
   var newBurger = req.body;
-  burger.insertOne(newBurger, function (data) {
-    res.json(data);
+  newBurger.devoured = false;
+  console.log(newBurger);
+  burger.insertOne(newBurger, function () {
+    res.redirect('/');
   })
 })
 
-router.put('/api/edit', function (req, res) {
-  var burgerToUpdate = {
-    burger: req.body.conditionVal
-  };
-  var updateValueObj = {};
-  updateValueObj[req.body.col] = req.body.val;
+router.put('/api/devour', function (req, res) {
+  console.log(req.body);
+  var burgerToUpdate = { burger_name: req.body.burger_name };
+  var updateValueObj = { devoured: true };
 
-  burger.updateOne(updateValueObj, burgerToUpdate, function (data) {
-    res.json(data);
+  burger.updateOne(updateValueObj, burgerToUpdate, function () {
+    res.redirect('/');
   });
 })
 
