@@ -1,20 +1,20 @@
 {
   "development": {
-    "username": "admin",
+    "username": "root",
     "password": "",
-    "database": "burgers_db",
+    "database": "burgers2_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "admin",
+    "username": "root",
     "password": "",
     "database": "database_test",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
-    "username": "admin",
+    "username": "root",
     "password": "",
     "database": "database_production",
     "host": "localhost",
