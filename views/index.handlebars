@@ -6,15 +6,15 @@
       <h4>{{this.id}}. {{this.burger_name}}</h4>
       <hr>
       <i>&#x1F354</i>
-      <input type="hidden" name="id" value="{{id}}">
-      <input type="hidden" name="burger_name" value="{{burger_name}}">
-      <button type="submit">Devour burger!</button>
+      <input class="b-id" type="hidden" name="id" value="{{id}}">
+      <input class="b-name" type="hidden" name="burger_name" value="{{burger_name}}">
+      <button id="test" type="submit">Devour burger!</button>
     </form>
     {{/unless}}
     {{/each}}
   </div>
 </div>
-<div class="column" id="burgers-devvoured">
+<div class="column" id="burgers-devoured">
   <div>
     {{#each burgers}}
     {{#if this.devoured}}
@@ -22,7 +22,7 @@
       <h4>{{this.id}}. {{this.burger_name}}</h4>
       <hr>
       <i>&#x1F354</i>
-      <span> Eaten!</span>
+      <span> Eaten by {{this.Customer.customer}}!</span>
     </form>
     {{/if}}
     {{/each}}

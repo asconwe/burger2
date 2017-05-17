@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Burger = sequelize.define("Burger", {
     burger_name: {
       type: DataTypes.STRING,
@@ -11,6 +11,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-  });
+  }, {
+      // Burgers to belong to Customers
+      classMethods: {
+        associate: function (models) {
+          // Associating Burger with Customer
+          Burger.belongsTo(models.Customer, {
+            foreignKey: {
+              allowNull: false
+            }
+          });
+        }
+      }
+    });
   return Burger;
 };

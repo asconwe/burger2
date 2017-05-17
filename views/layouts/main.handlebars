@@ -22,7 +22,14 @@
     <div class="modal" id="new-burger-modal">
       <form class="modal-form" action="/api/new" method="POST">
         <input type="text" placeholder="&#x1F354" name="burger_name">
+        <input type="text" placeholder="Who is the burger for?" name="customer">
         <input type="submit" value="Add burger!">
+      </form>
+    </div>
+    <div class="modal" id="customer-name-modal">
+      <form class="modal-form" action="/api/customer" method="GET">
+        <input id="customer-name" type="text" placeholder="What's your name?'" name="customer">
+        <input type="submit" value="Eat the burger!">
       </form>
     </div>
   </div>
