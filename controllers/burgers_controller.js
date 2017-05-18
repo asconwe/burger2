@@ -3,11 +3,10 @@ var db = require('../models');
 function routes(app) {
 
   app.get('/', function (req, res) {
-    db.Burger.findAll({ include: [db.Customer]}).then(function (data) {
+    db.Burger.findAll({ include: [db.Customer] }).then(function (data) {
       var burgerObj = {
         burgers: data
       };
-      console.log(data);
       res.render('index', burgerObj);
     });
   });
@@ -51,17 +50,20 @@ function routes(app) {
     };
     db.Customer.findOne({ where: { customer: req.body.customer }, include: [db.Burger] }).then(function (data) {
       if (data) {
+        data.Burgers.forEach(function (Burger, i) {
+          if (Burger.burger_name === req.body.burger_name) {
+            db.Burger.update(updateValueObj, { where: burgerToUpdate }).then(function (data) {
+              console.log('eat burger');
+              res.json({ message: 'Burger eaten by ' + req.body.customer });
+            });
+          } else if (i === data.Burgers.length - 1) {
+            console.log('dont eat burger');
+            res.json({ message: 'That is not your burger!' });
+          }
+        });
 
-        if (data.Burgers[0].burger_name === req.body.burger_name) {
-          db.Burger.update(updateValueObj, { where: burgerToUpdate }).then(function (data) {
-            console.log('eat burger');
-            res.json({ message: 'Burger eaten by ' + req.body.customer });
-          });
-        } else { 
-          console.log('dont eat burger');
-          res.json({ message: 'That is not your burger!' });
-        }
       } else {
+        console.log('no available burgers');
         res.json({ message: 'You haven\'t ordered any burgers!' });
       }
     });

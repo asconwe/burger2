@@ -1,6 +1,10 @@
 {
   "development": {
-    "use_env_variable": "process.env.JAWSDB_URL"
+    "username": "admin",
+    "password": "",
+    "database": "burgers2_db",
+    "host": "localhost",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
@@ -15,6 +19,6 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  },
+  }
   
 }
