@@ -25,7 +25,7 @@ app.use(methodOverride("_method"));
 
 burgersController(app);
 
-var PORT = process.env.PORT || 3000;
+var PORT = (process.env.PORT || 3000);
 
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
